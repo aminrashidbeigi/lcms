@@ -6,6 +6,7 @@
  */
 class lcms {
     var $host;
+//    dsadsadassdada
     var $username;
     var $password;
     var $table;
