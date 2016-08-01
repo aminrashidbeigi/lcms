@@ -10,6 +10,7 @@ class lcms {
     var $password;
     var $dbname;
 
+
     public function lcmsPublic(){
 
     }
@@ -22,11 +23,22 @@ class lcms {
 
     }
 
-    public function connectTODatabase(){
 
+    private function buildAndConnectToDatabase(){
+//    making connection
+        $connection = new mysqli($this->host, $this->username, $this->password);
+        if($connection->connect_error){
+            die("connection failed: ".$connection->connect_error);
+        }
+//    creating database
+        $sql = "CREATE DATABASE lcmsDB";
+        if ($connection->query($sql) === TRUE){
+            echo "database created successfully";
+        } else{
+            echo "Couldnt create database: ".$connection->error;
+        }
+
+        $connection->close();
     }
 
-    private function buldDatabase(){
-
-    }
 }
